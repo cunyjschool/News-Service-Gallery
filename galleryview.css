@@ -46,6 +46,10 @@
 .newsservicegallery .panel .panel-overlay,
 .newsservicegallery .panel .overlay-background { height: 60px; padding: 0 1em; }
 
+.newsservicegallery .overlay { visibility: hidden !important; }
+
+.newsservicegallery .panel.has-description .overlay { visibility: visible !important; opacity: 0.8 !important; }
+
 /* PANEL OVERLAY BACKGROUND */
 .newsservicegallery .panel .overlay-background { background: #222; }
 

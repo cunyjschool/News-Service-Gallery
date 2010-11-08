@@ -6,17 +6,22 @@
 <div id="<?php echo $gallery->anchor ?>" class="newsservicegallery">
 	<!-- Thumbnails -->
 	<?php foreach ($images as $image) : ?>
-	<div class="panel">
 		<?php
 			$description = html_entity_decode( $image->description );
+			// This is a terrible sin but it's what we have to do
 			$results = explode( 'http://', $description );
-			$description = $results[0];
+			if ( isset( $results[0] ) && $results[0] != ' ' ) {
+				$description = $results[0];
+			} else {
+				$description = false;
+			}
 			if ( isset( $results[1] ) ) {
 				$url = $results[1];
 			} else {
 				$url = false;
 			}
-		?>
+		?>		
+	<div class="panel<?php if ( $description ) echo ' has-description'; ?>">
 		<?php if ( $image->alttext ): ?>
 			<h3><?php echo $image->alttext; ?></h3>
 		<?php endif; ?>
