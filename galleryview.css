@@ -55,6 +55,7 @@
 .newsservicegallery .panel .panel-overlay a { color: white; text-decoration: underline; font-weight: bold; }
 .newsservicegallery .panel .panel-overlay p {
 	margin: 0;
+	padding-top: 5px;
 }
 
 .newsservicegallery .panel img { width: 480px; height: 320px;}
