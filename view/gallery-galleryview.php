@@ -1,16 +1,4 @@
 <?php 
-/**
-Template Page for the jQuery Galleryview integration
-
-Follow variables are useable :
-
-	$gallery     : Contain all about the gallery
-	$images      : Contain all images, path, title
-	$pagination  : Contain the pagination content
-
- You can check the content when you insert the tag <?php var_dump($variable) ?>
- If you would like to show the timestamp of the image ,you can use <?php echo $exif['created_timestamp'] ?>
-**/
 
 ?>
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><?php if (!empty ($gallery)) : ?>
@@ -36,8 +24,8 @@ Follow variables are useable :
 <script type="text/javascript" defer="defer">
 	jQuery("document").ready(function(){
 		jQuery('#<?php echo $gallery->anchor ?>').galleryView({
-			panel_width: 700,
-			panel_height: 400,
+			panel_width: 480,
+			panel_height: 320,
 			frame_width: 40,
 			frame_height: 40,
 			transition_interval: 10000,
