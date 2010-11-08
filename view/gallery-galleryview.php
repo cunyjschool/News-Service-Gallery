@@ -3,14 +3,31 @@
 ?>
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><?php if (!empty ($gallery)) : ?>
 
-<div id="<?php echo $gallery->anchor ?>" class="galleryview">
+<div id="<?php echo $gallery->anchor ?>" class="newsservicegallery">
 	<!-- Thumbnails -->
-	<?php foreach ($images as $image) : ?>		
+	<?php foreach ($images as $image) : ?>
 	<div class="panel">
-		<img src="<?php echo $image->imageURL ?>" />
+		<?php
+			$description = html_entity_decode ($image->description);
+			$results = explode( 'http://', $description );
+			$description = $results[0];
+			$url = $results[1];
+		?>
+		<?php if ( $image->alttext ): ?>
+			<h3><?php echo $image->alttext; ?></h3>
+		<?php endif; ?>
+		<?php if ( $url ): ?>
+		<a href="http://<?php echo $url; ?>">
+		<?php endif; ?>
+		<img src="<?php echo $image->imageURL ?>" height="320px" width="480px" />
+		<?php if ( $description ): ?>
 		<div class="panel-overlay">
-			<p><?php echo html_entity_decode ($image->description); ?></p>
+			<p><?php echo $description; ?></p>
 		</div>
+		<?php endif; ?>
+		<?php if ( $url ): ?>
+		</a>
+		<?php endif; ?>
 	</div>
  	<?php endforeach; ?>
   	<ul class="filmstrip">
@@ -25,7 +42,7 @@
 	jQuery("document").ready(function(){
 		jQuery('#<?php echo $gallery->anchor ?>').galleryView({
 			panel_width: 480,
-			panel_height: 320,
+			panel_height: 340,
 			frame_width: 40,
 			frame_height: 40,
 			transition_interval: 10000,
